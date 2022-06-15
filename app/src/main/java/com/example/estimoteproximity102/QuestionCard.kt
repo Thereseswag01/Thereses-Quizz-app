@@ -1,35 +1,44 @@
 package com.example.estimoteproximity102
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun QuestionCard(
-    questions: Question,
+    question: Question,
     modifier: Modifier = Modifier
 ) {
-    Row(modifier = Modifier.padding(all = 8.dp)) {
+
         Column {
-            Text(text = questions.ID)
+            Text(text = question.SpørgsmålOverskrift)
             Spacer(modifier = Modifier.height(4.dp))
 
-            Text(text = questions.Spørgsmål)
+            Text(text = question.Spørgsmål)
             Spacer(modifier = Modifier.height(4.dp))
 
-            Text(text = questions.valg)
-            Spacer(modifier = Modifier.height(4.dp))
+            LazyColumn(
+                modifier = modifier
+            ) {
+                items(
+                    items = question.valg
+                ) { answer ->
+                    AnswerCard(
+                        answer = answer,
+                        false,
+                        {}
+                    )
+                }
+            }
 
-            Text(text = questions.DetRigitgeSvarIndex)
+            //Text(text = question.DetRigitgeSvarIndex)
             Spacer(modifier = Modifier.height(4.dp))
 
 
 
         }
-    }
 }

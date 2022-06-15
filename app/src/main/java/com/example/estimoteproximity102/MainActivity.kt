@@ -119,7 +119,7 @@ class MainActivity : ComponentActivity() {
 fun Message(zoneEventViewModel: ZoneEventViewModel) {
     Column() {
         Text(text = zoneEventViewModel.tag, fontSize = 30.sp)
-        //QuestionCard( questions = )
+        QuestionCard(QuestionData.questionsSample[0])
     }
 
 }
